@@ -1,0 +1,21 @@
+{
+    "name": "xenonmc/xpframe-mvc",
+    "description": "",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "XENONMC",
+            "email": "support@xenonmc.xyz"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=8.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "XENONMC\\XPFRAME\\Mvc\\": "src/"
+        }
+    }
+}
