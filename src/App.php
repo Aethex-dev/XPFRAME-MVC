@@ -2,7 +2,7 @@
 
 namespace XENONMC\XPFRAME\Mvc;
 
-classApp {
+class Mvc {
   
     function __construct()
     {
