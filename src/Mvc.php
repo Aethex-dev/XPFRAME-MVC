@@ -1,19 +1,6 @@
 <?php
 
-/**
- * COPYRIGHT XENONMC 2019 - Current
- *
- * XPFRAME and all of its named materials rights belong to XENONMC
- * You may fork and redistribute materials of this framework as long as proper crediting is given, learn more at https://xenonmc.xyz/resources/XENONMC/XPFRAME/copyright
- *
- * @package XENONMC\XPFRAME\cli
- * @author XENONMC <support@xenonmc.xyz>
- * @website https://xenonmc.xyz
- *
- */
-
 namespace XENONMC\XPFRAME\Mvc;
-
 use XENONMC\XPFRAME\ext\Config;
 use XENONMC\XPFRAME\ext\Utils;
 use XENONMC\XPFRAME\Mvc\mvc\Controller;
@@ -23,31 +10,23 @@ use XENONMC\XPFRAME\Mvc\mvc\View;
 class Mvc {
 
     /**
-     * @var View , view class
-     *
+     * @var View view class
      */
-
     public View $view;
 
     /**
-     * @var Model , model class
-     *
+     * @var Model model class
      */
-
     public Model $model;
 
     /**
-     * @var Controller  , controller class
-     *
+     * @var Controller controller class
      */
-
     public Controller $controller;
 
     /**
      * options
-     *
      */
-
     public array $options = array(
 
         "v-cache-dir" => "internal/cache",
@@ -58,9 +37,7 @@ class Mvc {
      * central class for performing mvc functions for displaying, rendering webpages, starting app classes, managing a databases and more
      *
      * @param array $options , all the options for constructing
-     *
      */
-  
     function __construct(array $options = [])
     {
 
