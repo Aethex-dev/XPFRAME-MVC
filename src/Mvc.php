@@ -28,19 +28,21 @@ class Mvc {
      * options
      */
     public array $options = array(
-
-        "v-cache-dir" => "internal/cache",
-        "v-view-dir" => "internal/views"
+        "v-cache-dir" => "internal/cache/views",
+        "v-views-dir" => "internal/views",
+        "use" => [],
+        "use-on-cli-command-event" => true,
+        "stop-apps-on-cli-run" => true
     );
 
     /**
      * central class for performing mvc functions for displaying, rendering webpages, starting app classes, managing a databases and more
      *
-     * @param array $options , all the options for constructing
+     * @param array $options all the options for constructing
+     * @param callable|null $callback callback function
      */
-    function __construct(array $options = [])
+    function __construct(array $options = [], callable|null $callback = null)
     {
-
         // globally define the initialization options in this class
         $this->options = $options;
 
@@ -48,11 +50,24 @@ class Mvc {
         $options = Utils::fill_array($this->options, $options);
 
         // initialize mvc class based on config
-        foreach (Config::get("xpframe.yml")['mvc']['classes'] as $mvc_class_name) {
-
-            // create mvc class namespace and construct it
-            $mvc_class_namespace = "\\XENONMC\\XPFRAME\\Mvc\\mvc\\" . $mvc_class_name;
-            $this->{$mvc_class_name} = new $mvc_class_namespace($this, $options);
+        if (in_array("Model", $options["use"])) {
+            
+            $this->model = new Model($this, $options);
+        }
+        
+        if (in_array("View", $options["use"])) {
+            
+            $this->view = new View($this, $options);
+        }
+        
+        if (in_array("Controller", $options["use"])) {
+            
+            $this->controller = new Controller($this, $options);
+        }
+        
+        // run callback
+        if ($callback != null) {
+            $callback($this);
         }
     } 
 }
