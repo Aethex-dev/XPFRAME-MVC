@@ -1,6 +1,6 @@
 <?php
 
-namespace XENONMC\XPFRAME\Mvc\mvc\view;
+namespace XENONMC\XPFRAME\vendor\Mvc\mvc\view;
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
 

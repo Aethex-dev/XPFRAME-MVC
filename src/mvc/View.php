@@ -5,8 +5,8 @@ namespace XENONMC\XPFRAME\vendor\Mvc\mvc;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\SyntaxError;
-use XENONMC\XPFRAME\Mvc\mvc\view\cache;
-use XENONMC\XPFRAME\Mvc\mvc\view\TwigInit;
+use XENONMC\XPFRAME\vendor\Mvc\mvc\view\cache;
+use XENONMC\XPFRAME\vendor\Mvc\mvc\view\TwigInit;
 use XENONMC\XPFRAME\vendor\Mvc\Mvc;
 
 class View
