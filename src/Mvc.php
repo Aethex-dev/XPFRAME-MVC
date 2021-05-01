@@ -1,11 +1,11 @@
 <?php
 
-namespace XENONMC\XPFRAME\Mvc;
-use XENONMC\XPFRAME\ext\Config;
+namespace XENONMC\XPFRAME\vendor\Mvc;
+
 use XENONMC\XPFRAME\ext\Utils;
-use XENONMC\XPFRAME\Mvc\mvc\Controller;
-use XENONMC\XPFRAME\Mvc\mvc\Model;
-use XENONMC\XPFRAME\Mvc\mvc\View;
+use XENONMC\XPFRAME\vendor\Mvc\mvc\Controller;
+use XENONMC\XPFRAME\vendor\Mvc\mvc\Model;
+use XENONMC\XPFRAME\vendor\Mvc\mvc\View;
 
 class Mvc {
 
@@ -32,7 +32,8 @@ class Mvc {
         "v-views-dir" => "internal/views",
         "use" => [],
         "use-on-cli-command-event" => true,
-        "stop-apps-on-cli-run" => true
+        "stop-apps-on-cli-run" => true,
+        "c-apps-dir" => "src/apps"
     );
 
     /**
@@ -51,17 +52,12 @@ class Mvc {
 
         // initialize mvc class based on config
         if (in_array("Model", $options["use"])) {
-            
             $this->model = new Model($this, $options);
         }
-        
         if (in_array("View", $options["use"])) {
-            
             $this->view = new View($this, $options);
         }
-        
         if (in_array("Controller", $options["use"])) {
-            
             $this->controller = new Controller($this, $options);
         }
         

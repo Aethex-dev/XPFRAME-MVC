@@ -1,7 +1,8 @@
 <?php
 
-namespace XENONMC\XPFRAME\Mvc\mvc;
-use XENONMC\XPFRAME\Mvc\Mvc;
+namespace XENONMC\XPFRAME\vendor\Mvc\mvc;
+
+use XENONMC\XPFRAME\vendor\Mvc\Mvc;
 
 class Model
 {
@@ -19,7 +20,6 @@ class Model
      */
     public function __construct(Mvc $mvc, array $options)
     {
-
         // store mvc class object
         $this->mvc = $mvc;
     }

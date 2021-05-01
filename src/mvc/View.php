@@ -1,13 +1,13 @@
 <?php
 
-namespace XENONMC\XPFRAME\Mvc\mvc;
+namespace XENONMC\XPFRAME\vendor\Mvc\mvc;
 
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\SyntaxError;
-use XENONMC\XPFRAME\Mvc\Mvc;
 use XENONMC\XPFRAME\Mvc\mvc\view\cache;
 use XENONMC\XPFRAME\Mvc\mvc\view\TwigInit;
+use XENONMC\XPFRAME\vendor\Mvc\Mvc;
 
 class View
 {
@@ -48,7 +48,6 @@ class View
         if (!file_exists($options["v-cache-dir"])) {
             mkdir($options["v-cache-dir"], 0777, true);
         }
-
         if (!file_exists($options['v-views-dir'])) {
             mkdir($options["v-views-dir"], 0777, true);
         }
@@ -73,11 +72,9 @@ class View
 
         // get the template path
         $template_type_name = "templates";
-
         if ($isLayout == true) {
             $template_type_name = "layouts";
         }
-
         $template_path = $this->options["v-views-dir"] . "/" . $group . "/" . $template_type_name . "/" . $template . ".twig";
 
         // compile template to php code
@@ -97,19 +94,17 @@ class View
     {
         // get the template
         $template_type_dir = "templates";
-
         if ($isLayout == true) {
             $template_type_dir = "layouts";
         }
-
         if ($fromCache == true) {
             // execute and return the the template
             $template = file_get_contents($this->options["v-cache-dir"] . "/" . $group . "/" . $template_type_dir . "/" . $template . ".php");
             eval("?>" . $template);
 
-            $template_class = preg_match($template, "class (.+?)");
-            $template = new $template_class;
-
+            preg_match("~class (.+?) ~", $template, $template_class);
+            $template_class = $template_class[1];
+            $template = new $template_class($this->twig);
             return $template->render([]);
         }
 
@@ -120,11 +115,9 @@ class View
             echo $e;
         }
         eval("?>" . $template);
-
         preg_match("~class (.+?) ~", $template, $template_class);
         $template_class = $template_class[1];
         $template = new $template_class($this->twig);
-
         return $template->render([]);
     }
 

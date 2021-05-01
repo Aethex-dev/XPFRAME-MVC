@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "XENONMC\\XPFRAME\\Mvc\\": "src/"
+            "XENONMC\\XPFRAME\\vendor\\Mvc\\": "src/"
         }
     }
 }
